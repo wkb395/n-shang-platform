@@ -12,11 +12,9 @@ a{text-decoration:none;color:inherit;}
 button{cursor:pointer;font-size:14px;border:none;transition:0.2s;}
 input,select,textarea{border:1px solid #d1d5db;border-radius:8px;padding:10px 12px;font-size:14px;outline:none;}
 input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,255,0.1);}
-
 /* 顶部通栏 */
 .top-bar{background:#111827;color:#d1d5db;font-size:13px;padding:8px 24px;}
 .top-bar-inner{max-width:1300px;margin:0 auto;}
-
 /* 全局主导航栏【真正页面导航，切换完整页面】 */
 .main-nav{background:#165DFF;box-shadow:0 3px 12px rgba(22,93,255,0.2);position:sticky;top:0;z-index:99;}
 .nav-inner{max-width:1300px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
@@ -30,14 +28,12 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
 .nav-search{display:flex;gap:8px;max-width:360px;}
 .nav-search input{flex:1;border:0;border-radius:8px;}
 .nav-search button{background:#ff7d00;color:#fff;padding:0 14px;border-radius:8px;}
-
 /* 主容器 */
 .container{max-width:1300px;margin:24px auto;padding:0 24px;}
 .breadcrumb{font-size:13px;color:#6b7280;margin-bottom:16px;}
 .card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,0.05);margin-bottom:20px;}
 .info-card{background:#fff;border-left:5px solid #165DFF;padding:18px 22px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.05);margin-bottom:24px;line-height:1.7;font-size:14px;color:#4b5563;}
 .banner{background:linear-gradient(120deg,#165DFF,#4080ff);height:180px;border-radius:14px;margin-bottom:26px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;font-weight:600;box-shadow:0 4px 14px rgba(22,93,255,0.18);}
-
 /* 按钮 */
 .btn{padding:9px 16px;border-radius:8px;}
 .btn-primary{background:#165DFF;color:#fff;}
@@ -46,7 +42,6 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
 .btn-warning{background:#f59e0b;color:#fff;}
 .btn-danger{background:#ef4444;color:#fff;}
 .btn-default{background:#f3f4f6;color:#333;}
-
 /* 商品网格 */
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px;margin-bottom:30px;}
 .product-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);transition:0.28s;}
@@ -61,16 +56,13 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
 .stock-warn{color:#f59e0b;}
 .prod-buttons{display:flex;gap:6px;margin-top:10px;}
 .prod-buttons button{flex:1;padding:7px;border-radius:6px;}
-
 /* 页面容器：所有大页面，默认隐藏，page‑show才显示 */
 .page{display:none;}
 .page.page-show{display:block;}
-
 /* 购物车页面样式（独立完整页面，不是抽屉） */
 .cart-item-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #eee;flex-wrap:wrap;}
 .cart-qty{display:flex;gap:8px;align-items:center;}
 .cart-qty button{width:28px;height:28px;border:1px solid #ddd;background:#fff;border-radius:4px;}
-
 /* 订单卡片 */
 .order-card{border:1px solid #e5e7eb;border-radius:10px;padding:16px;margin-bottom:14px;}
 .order-head{display:flex;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
@@ -82,30 +74,41 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
 .st-finish{background:#f0fff4;color:#009b29;}
 .st-cancel{background:#fef2f2;color:#ef4444;}
 .order-actions{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
-
 /* 消息列表 */
-.msg-item{padding:12px;border-bottom:1px solid #eee;}
+.msg-item{padding:12px;border-bottom:1px solid #eee;cursor:pointer;}
+.msg-item:hover{background:#f8fafc;}
 .msg-title{font-weight:500;margin-bottom:4px;}
 .msg-time{font-size:12px;color:#888;}
-
 /* 表单组 */
 .form-group{margin-bottom:14px;}
 .form-group label{display:block;margin-bottom:6px;font-size:14px;color:#444;}
-
 /* 弹窗模态 */
 .modal-mask{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:110;display:none;align-items:center;justify-content:center;}
 .modal-box{width:460px;max-width:92%;background:#fff;border-radius:12px;padding:24px;}
 .modal-buttons{margin-top:20px;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;}
-
 /* 空提示 */
 .empty{text-align:center;padding:40px 0;color:#9ca3af;}
-
+/* 客服聊天区域样式（新增） */
+.msg-two-col{display:flex;gap:20px;}
+.msg-left{width:260px;border-right:1px solid #eee;}
+.msg-right{flex:1;}
+.chat-box{height:420px;overflow-y:auto;background:#fafafa;padding:12px;border-radius:8px;margin-bottom:12px;}
+.chat-row{margin:10px 0;display:flex;gap:8px;align-items:flex-start;}
+.chat-row.me{flex-direction:row-reverse;}
+.chat-bubble{max-width:70%;padding:10px 14px;border-radius:10px;font-size:14px;line-height:1.5;}
+.chat-row.sys .chat-bubble{background:#fff;border:1px solid #eee;border-top-left-radius:2px;}
+.chat-row.me .chat-bubble{background:#165DFF;color:#fff;border-top-right-radius:2px;}
+.chat-time{font-size:11px;color:#aaa;margin-top:3px;}
+.chat-input-row{display:flex;gap:10px;}
+.chat-input-row input{flex:1;}
 /* 响应式 */
 @media(max-width:860px){
     .nav-menu{display:none;}
     .nav-inner{padding:12px 16px;gap:10px;}
     .container{padding:0 16px;}
     .banner{height:140px;font-size:20px;}
+    .msg-two-col{flex-direction:column;}
+    .msg-left{width:100%;border-right:none;border-bottom:1px solid #eee;padding-bottom:12px;}
 }
 </style>
 </head>
@@ -113,7 +116,6 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
 <div class="top-bar">
     <div class="top-bar-inner">简历项目演示｜Python + C 互联网电商交易平台</div>
 </div>
-
 <!--【全局主导航栏，切换完整大页面】-->
 <div class="main-nav">
     <div class="nav-inner">
@@ -139,16 +141,14 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
         </div>
     </div>
 </div>
-
 <div class="container">
     <div class="breadcrumb"><span id="breadText">首页</span></div>
-
     <!-- ========== 页面1：首页 page-home ========== -->
     <div id="page-home" class="page page-show">
         <div class="banner">欢迎来到互联网商品交易平台</div>
         <div class="info-card">
             <b>项目简介：</b>业务主体Python FastAPI，性能关键模块C语言扩展；角色：买家、卖家、管理员、HR观察员(仅只读)；商品管理、购物车下单、抽象支付接口、订单物流跟踪；支持模糊搜索、分类、价格过滤；可配置冗余高可用，默认SQLite轻量化部署。
-            <br>⚠️本页面静态演示，完整后端源码保存在GitHub仓库。
+            <br>⚠️本页面静态演示，消息模块对接独立8001消息微服务。
         </div>
         <div class="card">
             <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
@@ -166,7 +166,6 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
             <div class="product-grid" id="homeProductBox"></div>
         </div>
     </div>
-
     <!-- ==========页面2：商品列表 page‑goods ========== -->
     <div id="page-goods" class="page">
         <h2 style="margin-bottom:16px">全部商品</h2>
@@ -184,7 +183,6 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
             <div class="product-grid" id="goodsProductBox"></div>
         </div>
     </div>
-
     <!-- ==========页面3：完整独立【购物车页面】不是弹窗抽屉！ page‑cart ========== -->
     <div id="page-cart" class="page">
         <h2 style="margin-bottom:16px">我的购物车</h2>
@@ -196,13 +194,26 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
             </div>
         </div>
     </div>
-
-    <!-- ==========页面4：消息中心 page‑message ========== -->
+    <!-- ==========页面4：消息中心 page‑message【对接8001消息微服务！】 ========== -->
     <div id="page-message" class="page">
         <h2 style="margin-bottom:16px">消息通知中心</h2>
-        <div class="card" id="msgPageBody"></div>
+        <div class="card">
+            <div class="msg-two-col">
+                <div class="msg-left">
+                    <div style="padding:8px;border-bottom:1px solid #eee;font-weight:500">会话列表</div>
+                    <div id="msgSessList"></div>
+                </div>
+                <div class="msg-right">
+                    <div id="msgChatTitle" style="padding:8px;border-bottom:1px solid #eee;font-weight:500;margin-bottom:10px;">请选择会话</div>
+                    <div class="chat-box" id="chatBox"></div>
+                    <div class="chat-input-row">
+                        <input id="chatInput" placeholder="输入消息，回车发送">
+                        <button class="btn btn-primary" onclick="sendChatMsg()">发送</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
     <!-- ==========页面5：个人中心 page‑profile【个人信息、收货地址】 ========== -->
     <div id="page-profile" class="page">
         <h2 style="margin-bottom:16px">个人中心</h2>
@@ -227,7 +238,6 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
             </div>
             <button class="btn btn-primary" onclick="saveProfile()">保存个人资料</button>
         </div>
-
         <div class="card">
             <h4>收货地址管理</h4>
             <div class="form-group">
@@ -245,13 +255,11 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
             <button class="btn btn-primary" onclick="addAddress()">新增收货地址</button>
             <div id="addrListBox" style="margin-top:16px;"></div>
         </div>
-
         <div class="card">
             <h4>我的订单快捷入口</h4>
             <button class="btn btn-primary" onclick="goPage('page-order-sub')">查看全部订单</button>
         </div>
     </div>
-
     <!-- =========子页面：订单中心（个人中心内部跳转过来） page‑order‑sub ========== -->
     <div id="page-order-sub" class="page">
         <h2 style="margin-bottom:16px">我的订单中心</h2>
@@ -266,7 +274,6 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
             <div id="orderPageBody"></div>
         </div>
     </div>
-
     <!-- =========页面6：卖家后台 page‑seller ========== -->
     <div id="page-seller" class="page">
         <h2 style="margin-bottom:16px">卖家后台｜商品管理</h2>
@@ -291,7 +298,6 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
             <div id="sellerProdListBox"></div>
         </div>
     </div>
-
     <!-- =========页面7：项目文档 page‑about ========== -->
     <div id="page-about" class="page">
         <h2 style="margin-bottom:16px">项目文档与技术说明</h2>
@@ -305,11 +311,10 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
             <h4>业务完整流程</h4>
             <p>商品浏览 →搜索筛选 →加入购物车 →提交订单 →模拟支付 →卖家发货 →确认收货完成；支持订单取消；支付层为抽象接口便于对接真实支付渠道。</p>
             <br>
-            <p>⚠️角色切换请前往【个人中心】页面。完整后端源码保存在GitHub仓库，当前仅前端静态演示。</p>
+            <p>⚠️角色切换请前往【个人中心】页面。消息模块独立微服务：127.0.0.1:8001。完整后端源码保存在GitHub仓库，当前页面前端演示。</p>
         </div>
     </div>
 </div>
-
 <!-- 支付弹窗 -->
 <div class="modal-mask" id="payModal">
     <div class="modal-box">
@@ -322,7 +327,6 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
         </div>
     </div>
 </div>
-
 <!-- HR权限拦截弹窗 -->
 <div class="modal-mask" id="denyModal">
     <div class="modal-box">
@@ -333,8 +337,12 @@ input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,25
         </div>
     </div>
 </div>
-
 <script>
+// ========= 消息微服务API地址 =========
+const MSG_API_BASE = "http://127.0.0.1:8001";
+const USER_ID = 1; // 当前登录用户ID，后续可以对接登录系统动态替换
+let currentChatSessionId = null;
+
 //常量定义
 const ROLES = {BUYER:"buyer",SELLER:"seller",ADMIN:"admin",HR:"hr_observer"};
 const ORDER_STATUS = {PENDING_PAY:"pending_pay",PAID:"paid",SHIPPED:"shipped",FINISHED:"finished",CANCEL:"cancelled"};
@@ -345,7 +353,6 @@ const statusMap = {
     finished:{text:"已完成",cls:"st-finish"},
     cancelled:{text:"已取消",cls:"st-cancel"}
 };
-
 //商品模拟数据
 let productData = [
     {id:1,name:"无线降噪蓝牙耳机",price:199,originPrice:249,stock:120,category:3,discount:true,onSale:true},
@@ -357,16 +364,12 @@ let productData = [
     {id:7,name:"桌面收纳文件盒",price:28,originPrice:36,stock:240,category:1,discount:false,onSale:true},
     {id:8,name:"户外便携折叠雨伞",price:42,originPrice:55,stock:180,category:2,discount:true,onSale:true}
 ];
-
 //本地存储读取
 let currentPage = "page-home";
 let currentRole = localStorage.getItem("demo_role")||ROLES.BUYER;
 let cart = JSON.parse(localStorage.getItem("demo_cart"))||[];
 let orders = JSON.parse(localStorage.getItem("demo_orders"))||[];
 let collectList = JSON.parse(localStorage.getItem("demo_collect"))||[];
-let msgList = JSON.parse(localStorage.getItem("demo_msg"))||[
-    {id:1,title:"系统通知",content:"欢迎使用电商平台",time:"2026‑10‑19",read:false}
-];
 let addrList = JSON.parse(localStorage.getItem("demo_addr"))||[];
 let userProfile = JSON.parse(localStorage.getItem("demo_profile"))||{username:"测试用户",phone:""};
 let orderFilterType = "all";
@@ -378,11 +381,9 @@ function saveAllStorage(){
     localStorage.setItem("demo_cart",JSON.stringify(cart));
     localStorage.setItem("demo_orders",JSON.stringify(orders));
     localStorage.setItem("demo_collect",JSON.stringify(collectList));
-    localStorage.setItem("demo_msg",JSON.stringify(msgList));
     localStorage.setItem("demo_addr",JSON.stringify(addrList));
     localStorage.setItem("demo_profile",JSON.stringify(userProfile));
 }
-
 //权限校验：HR禁止写操作
 function checkWritePerm(){
     if(currentRole === ROLES.HR){
@@ -391,7 +392,6 @@ function checkWritePerm(){
     }
     return true;
 }
-
 //【核心页面跳转 goPage：导航栏点击切换完整大页面，同步导航active高亮】
 function goPage(pageId){
     //隐藏所有page
@@ -399,13 +399,11 @@ function goPage(pageId){
     //显示目标页面
     document.getElementById(pageId).classList.add("page-show");
     currentPage = pageId;
-
     //清除导航所有active
     document.querySelectorAll(".nav-menu a").forEach(a=>a.classList.remove("nav-active"));
     //给对应导航a加上active
     const navA = document.querySelector(`.nav-menu a[data-page="${pageId}"]`);
     if(navA) navA.classList.add("nav-active");
-
     //面包屑
     const breadMap = {
         "page-home":"首页",
@@ -418,19 +416,17 @@ function goPage(pageId){
         "page-about":"项目文档"
     };
     document.getElementById("breadText").innerText = breadMap[pageId]||"";
-
     //页面切换自动渲染对应内容
     renderHomeProducts();
     renderGoodsProducts();
     renderCartPage();
-    renderMsgPage();
     renderProfileFill();
     renderAddrList();
     renderOrdersPage();
     renderSellerProdList();
+    loadMsgSession(); //进入消息页加载会话
     updateBadges();
 }
-
 //全局导航栏搜索
 function globalSearchClick(){
     const kw = document.getElementById("globalSearch").value.trim();
@@ -438,7 +434,6 @@ function globalSearchClick(){
     document.getElementById("goodsKw").value = kw;
     goPage("page-home");
 }
-
 //商品渲染：首页
 function renderHomeProducts(){
     const kw = document.getElementById("homeKw")?.value?.toLowerCase()||"";
@@ -470,7 +465,6 @@ function renderHomeProducts(){
     })
     document.getElementById("homeProductBox").innerHTML = html;
 }
-
 //商品渲染：商品列表页
 function renderGoodsProducts(){
     const kw = document.getElementById("goodsKw")?.value?.toLowerCase()||"";
@@ -499,7 +493,6 @@ function renderGoodsProducts(){
     })
     document.getElementById("goodsProductBox").innerHTML = html;
 }
-
 //加入购物车
 function cartAdd(pid){
     if(!checkWritePerm()) return;
@@ -510,7 +503,6 @@ function cartAdd(pid){
     updateBadges();
     renderCartPage();
 }
-
 //收藏切换
 function toggleCollect(pid){
     const idx = collectList.indexOf(pid);
@@ -519,7 +511,6 @@ function toggleCollect(pid){
     renderHomeProducts();
     renderGoodsProducts();
 }
-
 //【完整独立购物车页面渲染】
 function renderCartPage(){
     let html = "";
@@ -550,9 +541,8 @@ function cartMinus(idx){
 }
 function cartPlus(idx){cart[idx].count+=1;saveAllStorage();updateBadges();renderCartPage();}
 function cartDel(idx){cart.splice(idx,1);saveAllStorage();updateBadges();renderCartPage();}
-
 //购物车页面直接结算
-function cartPageCheckout(){
+async function cartPageCheckout(){
     if(!checkWritePerm()) return;
     if(cart.length===0){alert("购物车为空");return;}
     const total = cart.reduce((s,i)=>s+i.price*i.count,0);
@@ -574,33 +564,73 @@ function cartPageCheckout(){
     document.getElementById("payModal").style.display="flex";
 }
 function closePayModal(){document.getElementById("payModal").style.display="none";payingOrderId=null;}
-function mockPayOk(){
+async function mockPayOk(){
     if(!payingOrderId) return;
     const o = orders.find(x=>x.orderId===payingOrderId);
     if(o){o.status = ORDER_STATUS.PAID;}
-    //新增支付成功系统消息
-    msgList.unshift({id:Date.now(),title:"订单支付成功",content:`订单${payingOrderId}已支付成功，等待卖家发货`,time:new Date().toLocaleString(),read:false});
+    //调用微服务API，新增订单支付成功系统消息
+    await fetch(`${MSG_API_BASE}/api/message/add`,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({user_id:USER_ID, title:"订单支付成功", content:`订单${payingOrderId}已支付成功，等待卖家发货`})
+    })
     saveAllStorage();
     closePayModal();
     renderOrdersPage();
-    renderMsgPage();
+    loadMsgSession();
     updateBadges();
     alert("✅模拟支付成功");
 }
 
-//消息中心页面渲染
-function renderMsgPage(){
+// ==========消息微服务相关函数==========
+//加载会话（客服会话）
+async function loadMsgSession(){
+    const res = await fetch(`${MSG_API_BASE}/api/chat/session?user_id=${USER_ID}`);
+    const data = await res.json();
+    currentChatSessionId = data.session_id;
+    document.getElementById("msgSessList").innerHTML = `
+        <div class="msg-item" onclick="switchChatSession()">
+            <div class="msg-title">在线客服</div>
+            <div class="msg-time">电商平台客服小N</div>
+        </div>
+    `;
+    renderChatHistory();
+}
+async function switchChatSession(){
+    document.getElementById("msgChatTitle").innerText = "在线客服 - 客服小N";
+    renderChatHistory();
+}
+async function renderChatHistory(){
+    if(!currentChatSessionId) return;
+    const res = await fetch(`${MSG_API_BASE}/api/chat/message?session_id=${currentChatSessionId}`);
+    const msgList = await res.json();
     let html = "";
-    if(msgList.length===0){html=`<div class="empty">暂无消息</div>`;}
-    msgList.forEach(m=>{
-        html +=`
-        <div class="msg-item">
-            <div class="msg-title">${m.title} ${m.read?"":"🔴"}</div>
-            <div>${m.content}</div>
-            <div class="msg-time">${m.time}</div>
-        </div>`;
+    if(!msgList.length){
+        html = `<div class="empty">您好，请问有什么可以帮您？</div>`;
+    }else{
+        msgList.forEach(m=>{
+            html += `
+            <div class="chat-row ${m.sender_type==='user'?'me':'sys'}">
+                <div class="chat-bubble">${m.content}</div>
+                <div class="chat-time">${m.create_time}</div>
+            </div>`;
+        })
+    }
+    const box = document.getElementById("chatBox");
+    box.innerHTML = html;
+    box.scrollTop = box.scrollHeight;
+}
+async function sendChatMsg(){
+    const inputDom = document.getElementById("chatInput");
+    const content = inputDom.value.trim();
+    if(!content || !currentChatSessionId) return;
+    await fetch(`${MSG_API_BASE}/api/chat/message`,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({session_id:currentChatSessionId, sender_type:"user", content:content})
     })
-    document.getElementById("msgPageBody").innerHTML = html;
+    inputDom.value = "";
+    renderChatHistory();
 }
 
 //个人中心：填充表单
@@ -617,7 +647,6 @@ function saveProfile(){
     saveAllStorage();
     alert("✅个人资料已保存");
 }
-
 //收货地址
 function addAddress(){
     const name = document.getElementById("addrName").value.trim();
@@ -639,7 +668,6 @@ function renderAddrList(){
     })
     document.getElementById("addrListBox").innerHTML = html;
 }
-
 //订单页面渲染&筛选
 function filterOrders(t){orderFilterType=t;renderOrdersPage();}
 function renderOrdersPage(){
@@ -666,21 +694,30 @@ function renderOrdersPage(){
     })
     document.getElementById("orderPageBody").innerHTML = html;
 }
-function mockShipOrder(oid){
+async function mockShipOrder(oid){
     if(!checkWritePerm()) return;
     const o = orders.find(x=>x.orderId===oid);
     if(o&&o.status===ORDER_STATUS.PAID){
         o.status = ORDER_STATUS.SHIPPED;
-        msgList.unshift({id:Date.now(),title:"订单发货通知",content:`订单${oid}已发货`,time:new Date().toLocaleString(),read:false});
-        saveAllStorage();renderOrdersPage();renderMsgPage();updateBadges();alert("🚚模拟发货完成");
+        //推送发货消息到微服务
+        await fetch(`${MSG_API_BASE}/api/message/add`,{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({user_id:USER_ID, title:"订单发货通知", content:`订单${oid}已发货`})
+        })
+        saveAllStorage();renderOrdersPage();loadMsgSession();updateBadges();alert("🚚模拟发货完成");
     }
 }
-function mockFinishOrder(oid){
+async function mockFinishOrder(oid){
     const o = orders.find(x=>x.orderId===oid);
     if(o&&o.status===ORDER_STATUS.SHIPPED){
         o.status = ORDER_STATUS.FINISHED;
-        msgList.unshift({id:Date.now(),title:"订单已完成",content:`订单${oid}已确认收货完成`,time:new Date().toLocaleString(),read:false});
-        saveAllStorage();renderOrdersPage();renderMsgPage();updateBadges();alert("✅确认收货，订单已完成");
+        await fetch(`${MSG_API_BASE}/api/message/add`,{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({user_id:USER_ID, title:"订单已完成", content:`订单${oid}已确认收货完成`})
+        })
+        saveAllStorage();renderOrdersPage();loadMsgSession();updateBadges();alert("✅确认收货，订单已完成");
     }
 }
 function mockCancelOrder(oid){
@@ -691,7 +728,6 @@ function mockCancelOrder(oid){
         saveAllStorage();renderOrdersPage();alert("订单已取消");
     }
 }
-
 //卖家后台：新增商品
 function sellerAddProduct(){
     if(!checkWritePerm()) return;
@@ -730,21 +766,32 @@ function toggleOnSale(pid){
     renderSellerProdList();
     renderHomeProducts();renderGoodsProducts();
 }
-
 //角标更新（购物车数量、消息未读）
-function updateBadges(){
+async function updateBadges(){
     const cartCnt = cart.reduce((s,i)=>s+i.count,0);
     document.getElementById("cartBadge").innerText = cartCnt;
-    const unreadMsg = msgList.filter(m=>!m.read).length;
-    document.getElementById("msgBadge").innerText = unreadMsg;
+    //从后端API获取消息列表，统计未读
+    try{
+        const res = await fetch(`${MSG_API_BASE}/api/message/list?user_id=${USER_ID}`);
+        const msgRemote = await res.json();
+        const unreadMsg = msgRemote.filter(m=>!m.is_read).length;
+        document.getElementById("msgBadge").innerText = unreadMsg;
+    }catch(e){
+        document.getElementById("msgBadge").innerText = "?";
+    }
 }
-
 //权限弹窗关闭
 function closeDenyModal(){document.getElementById("denyModal").style.display="none";}
-
+//回车发送聊天消息
+document.addEventListener("keydown",function(e){
+    if(e.target.id === "chatInput" && e.key === "Enter"){
+        sendChatMsg();
+    }
+})
 //页面初始化
-window.onload = function(){
+window.onload = async function(){
     goPage("page-home");
+    await updateBadges();
 }
 </script>
 </body>
