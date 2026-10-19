@@ -1,124 +1,751 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>互联网电商交易平台｜项目演示</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>互联网商品交易电商平台｜简历项目演示</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;padding:16px;max-width:1200px;margin:0 auto;background:#f7f8fa}
-h1{margin-bottom:12px;color:#1f2937;font-size:22px}
-.desc{color:#666;margin-bottom:20px;font-size:14px}
-.card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px;margin:10px 0}
-button{padding:8px 14px;background:#2563eb;color:#fff;border:none;border-radius:6px;cursor:pointer;margin:4px;font-size:14px}
-button:disabled{background:#94a3b8;cursor:not-allowed}
-input{padding:8px 10px;margin:4px;border:1px solid #cbd5e1;border-radius:6px;font-size:14px}
-.product-item{border:1px solid #ddd;padding:12px;border-radius:8px;margin:8px 0}
-.tip{background:#dbeafe;padding:10px;border-radius:6px;margin:12px 0;color:#1e40af;font-size:13px}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#f5f7fa;color:#1f2937;}
+ul{list-style:none;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-size:14px;border:none;transition:0.2s;}
+input,select,textarea{border:1px solid #d1d5db;border-radius:8px;padding:10px 12px;font-size:14px;outline:none;}
+input:focus,select:focus{border-color:#165DFF;box-shadow:0 0 0 3px rgba(22,93,255,0.1);}
+
+/* 顶部通栏 */
+.top-bar{background:#111827;color:#d1d5db;font-size:13px;padding:8px 24px;}
+.top-bar-inner{max-width:1300px;margin:0 auto;}
+
+/* 全局主导航栏【真正页面导航，切换完整页面】 */
+.main-nav{background:#165DFF;box-shadow:0 3px 12px rgba(22,93,255,0.2);position:sticky;top:0;z-index:99;}
+.nav-inner{max-width:1300px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.logo{color:#fff;font-size:22px;font-weight:700;white-space:nowrap;}
+.nav-menu{display:flex;gap:4px;flex:1;}
+.nav-menu li a{display:block;color:#fff;padding:8px 14px;border-radius:6px;}
+.nav-menu li a:hover{background:rgba(255,255,255,0.18);}
+.nav-menu li a.nav-active{background:rgba(255,255,255,0.25);}
+.nav-badge{position:relative;}
+.badge-num{position:absolute;top:-6px;right:-6px;background:#ef4444;color:#fff;min-width:20px;height:20px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;}
+.nav-search{display:flex;gap:8px;max-width:360px;}
+.nav-search input{flex:1;border:0;border-radius:8px;}
+.nav-search button{background:#ff7d00;color:#fff;padding:0 14px;border-radius:8px;}
+
+/* 主容器 */
+.container{max-width:1300px;margin:24px auto;padding:0 24px;}
+.breadcrumb{font-size:13px;color:#6b7280;margin-bottom:16px;}
+.card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,0.05);margin-bottom:20px;}
+.info-card{background:#fff;border-left:5px solid #165DFF;padding:18px 22px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.05);margin-bottom:24px;line-height:1.7;font-size:14px;color:#4b5563;}
+.banner{background:linear-gradient(120deg,#165DFF,#4080ff);height:180px;border-radius:14px;margin-bottom:26px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;font-weight:600;box-shadow:0 4px 14px rgba(22,93,255,0.18);}
+
+/* 按钮 */
+.btn{padding:9px 16px;border-radius:8px;}
+.btn-primary{background:#165DFF;color:#fff;}
+.btn-primary:hover{background:#0e42cb;}
+.btn-success{background:#10b981;color:#fff;}
+.btn-warning{background:#f59e0b;color:#fff;}
+.btn-danger{background:#ef4444;color:#fff;}
+.btn-default{background:#f3f4f6;color:#333;}
+
+/* 商品网格 */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px;margin-bottom:30px;}
+.product-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);transition:0.28s;}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(22,93,255,0.14);}
+.prod-img{height:160px;background:linear-gradient(145deg,#eef2ff,#e0e7ff);display:flex;align-items:center;justify-content:center;font-size:44px;position:relative;}
+.tag-sale{position:absolute;top:8px;left:8px;background:#ef4444;color:#fff;font-size:12px;padding:2px 7px;border-radius:4px;}
+.prod-body{padding:14px;}
+.prod-name{font-size:15px;font-weight:500;margin-bottom:8px;}
+.price-now{color:#ef4444;font-size:18px;font-weight:bold;}
+.price-old{color:#9ca3af;font-size:13px;text-decoration:line-through;margin-left:8px;}
+.prod-meta{font-size:13px;color:#6b7280;margin:8px 0;}
+.stock-warn{color:#f59e0b;}
+.prod-buttons{display:flex;gap:6px;margin-top:10px;}
+.prod-buttons button{flex:1;padding:7px;border-radius:6px;}
+
+/* 页面容器：所有大页面，默认隐藏，page‑show才显示 */
+.page{display:none;}
+.page.page-show{display:block;}
+
+/* 购物车页面样式（独立完整页面，不是抽屉） */
+.cart-item-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #eee;flex-wrap:wrap;}
+.cart-qty{display:flex;gap:8px;align-items:center;}
+.cart-qty button{width:28px;height:28px;border:1px solid #ddd;background:#fff;border-radius:4px;}
+
+/* 订单卡片 */
+.order-card{border:1px solid #e5e7eb;border-radius:10px;padding:16px;margin-bottom:14px;}
+.order-head{display:flex;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
+.order-no{color:#165DFF;font-weight:500;}
+.status-tag{font-size:12px;padding:3px 10px;border-radius:20px;}
+.st-pending{background:#fff7e6;color:#fa8c16;}
+.st-paid{background:#e6fffb;color:#00b42a;}
+.st-shipped{background:#e8f3ff;color:#165DFF;}
+.st-finish{background:#f0fff4;color:#009b29;}
+.st-cancel{background:#fef2f2;color:#ef4444;}
+.order-actions{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+
+/* 消息列表 */
+.msg-item{padding:12px;border-bottom:1px solid #eee;}
+.msg-title{font-weight:500;margin-bottom:4px;}
+.msg-time{font-size:12px;color:#888;}
+
+/* 表单组 */
+.form-group{margin-bottom:14px;}
+.form-group label{display:block;margin-bottom:6px;font-size:14px;color:#444;}
+
+/* 弹窗模态 */
+.modal-mask{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:110;display:none;align-items:center;justify-content:center;}
+.modal-box{width:460px;max-width:92%;background:#fff;border-radius:12px;padding:24px;}
+.modal-buttons{margin-top:20px;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;}
+
+/* 空提示 */
+.empty{text-align:center;padding:40px 0;color:#9ca3af;}
+
+/* 响应式 */
+@media(max-width:860px){
+    .nav-menu{display:none;}
+    .nav-inner{padding:12px 16px;gap:10px;}
+    .container{padding:0 16px;}
+    .banner{height:140px;font-size:20px;}
+}
 </style>
 </head>
 <body>
-<h1>互联网商品交易电商平台(MVP演示)</h1>
-<div class="desc">
-项目技术栈：Python(FastAPI)业务逻辑，C实现性能模块；角色：买家/卖家/管理员/HR观察员(仅只读权限)；本页面为静态演示，完整源码在本仓库。
+<div class="top-bar">
+    <div class="top-bar-inner">简历项目演示｜Python + C 互联网电商交易平台</div>
 </div>
 
-<div class="tip">💡简历项目演示页面：模拟商品浏览、搜索、加入购物车、下单流程。</div>
-
-<div class="card">
-  <h3>商品搜索（模拟）</h3>
-  <input id="kw" placeholder="输入关键词模糊搜索">
-  <button onclick="doSearch()">搜索</button>
-  <div id="productList"></div>
+<!--【全局主导航栏，切换完整大页面】-->
+<div class="main-nav">
+    <div class="nav-inner">
+        <div class="logo">电商交易平台</div>
+        <ul class="nav-menu">
+            <li><a href="javascript:void(0)" data-page="page-home" onclick="goPage('page-home')" class="nav-active">首页</a></li>
+            <li><a href="javascript:void(0)" data-page="page-goods" onclick="goPage('page-goods')">商品</a></li>
+            <li class="nav-badge">
+                <a href="javascript:void(0)" data-page="page-cart" onclick="goPage('page-cart')">购物车</a>
+                <span class="badge-num" id="cartBadge">0</span>
+            </li>
+            <li class="nav-badge">
+                <a href="javascript:void(0)" data-page="page-message" onclick="goPage('page-message')">消息</a>
+                <span class="badge-num" id="msgBadge">0</span>
+            </li>
+            <li><a href="javascript:void(0)" data-page="page-profile" onclick="goPage('page-profile')">个人中心</a></li>
+            <li><a href="javascript:void(0)" data-page="page-seller" onclick="goPage('page-seller')">卖家后台</a></li>
+            <li><a href="javascript:void(0)" data-page="page-about" onclick="goPage('page-about')">项目文档</a></li>
+        </ul>
+        <div class="nav-search">
+            <input id="globalSearch" placeholder="站内搜索商品">
+            <button onclick="globalSearchClick()">搜索</button>
+        </div>
+    </div>
 </div>
 
-<div class="card">
-  <h3>购物车</h3>
-  <div id="cartBox"></div>
-  <button onclick="submitOrder()">提交订单(模拟)</button>
+<div class="container">
+    <div class="breadcrumb"><span id="breadText">首页</span></div>
+
+    <!-- ========== 页面1：首页 page-home ========== -->
+    <div id="page-home" class="page page-show">
+        <div class="banner">欢迎来到互联网商品交易平台</div>
+        <div class="info-card">
+            <b>项目简介：</b>业务主体Python FastAPI，性能关键模块C语言扩展；角色：买家、卖家、管理员、HR观察员(仅只读)；商品管理、购物车下单、抽象支付接口、订单物流跟踪；支持模糊搜索、分类、价格过滤；可配置冗余高可用，默认SQLite轻量化部署。
+            <br>⚠️本页面静态演示，完整后端源码保存在GitHub仓库。
+        </div>
+        <div class="card">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+                <input id="homeKw" placeholder="关键词">
+                <select id="homeCat">
+                    <option value="">全部分类</option>
+                    <option value="1">办公用品</option>
+                    <option value="2">生活用品</option>
+                    <option value="3">数码电子</option>
+                </select>
+                <input type="number" id="homeMin" placeholder="最低" style="width:90px;">
+                <input type="number" id="homeMax" placeholder="最高" style="width:90px;">
+                <button class="btn btn-primary" onclick="renderHomeProducts()">🔍查询</button>
+            </div>
+            <div class="product-grid" id="homeProductBox"></div>
+        </div>
+    </div>
+
+    <!-- ==========页面2：商品列表 page‑goods ========== -->
+    <div id="page-goods" class="page">
+        <h2 style="margin-bottom:16px">全部商品</h2>
+        <div class="card">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+                <input id="goodsKw" placeholder="搜索商品">
+                <select id="goodsCat">
+                    <option value="">全部分类</option>
+                    <option value="1">办公用品</option>
+                    <option value="2">生活用品</option>
+                    <option value="3">数码电子</option>
+                </select>
+                <button class="btn btn-primary" onclick="renderGoodsProducts()">查询筛选</button>
+            </div>
+            <div class="product-grid" id="goodsProductBox"></div>
+        </div>
+    </div>
+
+    <!-- ==========页面3：完整独立【购物车页面】不是弹窗抽屉！ page‑cart ========== -->
+    <div id="page-cart" class="page">
+        <h2 style="margin-bottom:16px">我的购物车</h2>
+        <div class="card">
+            <div id="cartPageBody"></div>
+            <div style="margin-top:20px;padding-top:16px;border-top:1px solid #eee;">
+                <div>合计：<span style="color:#ef4444;font-size:20px;font-weight:bold" id="cartPageTotal">0</span> 元</div>
+                <button class="btn btn-primary" style="margin-top:12px" onclick="cartPageCheckout()">提交订单结算</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========页面4：消息中心 page‑message ========== -->
+    <div id="page-message" class="page">
+        <h2 style="margin-bottom:16px">消息通知中心</h2>
+        <div class="card" id="msgPageBody"></div>
+    </div>
+
+    <!-- ==========页面5：个人中心 page‑profile【个人信息、收货地址】 ========== -->
+    <div id="page-profile" class="page">
+        <h2 style="margin-bottom:16px">个人中心</h2>
+        <div class="card">
+            <h4>用户资料</h4>
+            <div class="form-group">
+                <label>用户名</label>
+                <input id="profileUsername" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <label>手机号</label>
+                <input id="profilePhone" placeholder="手机号码">
+            </div>
+            <div class="form-group">
+                <label>当前角色（仅演示）</label>
+                <select id="profileRoleSelect">
+                    <option value="buyer">买家</option>
+                    <option value="seller">卖家</option>
+                    <option value="admin">管理员</option>
+                    <option value="hr_observer">HR观察员【仅只读】</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" onclick="saveProfile()">保存个人资料</button>
+        </div>
+
+        <div class="card">
+            <h4>收货地址管理</h4>
+            <div class="form-group">
+                <label>收件人</label>
+                <input id="addrName" placeholder="收件人姓名">
+            </div>
+            <div class="form-group">
+                <label>联系电话</label>
+                <input id="addrPhone" placeholder="联系电话">
+            </div>
+            <div class="form-group">
+                <label>详细地址</label>
+                <textarea id="addrDetail" rows="3" placeholder="省市区详细地址"></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="addAddress()">新增收货地址</button>
+            <div id="addrListBox" style="margin-top:16px;"></div>
+        </div>
+
+        <div class="card">
+            <h4>我的订单快捷入口</h4>
+            <button class="btn btn-primary" onclick="goPage('page-order-sub')">查看全部订单</button>
+        </div>
+    </div>
+
+    <!-- =========子页面：订单中心（个人中心内部跳转过来） page‑order‑sub ========== -->
+    <div id="page-order-sub" class="page">
+        <h2 style="margin-bottom:16px">我的订单中心</h2>
+        <div class="card">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
+                <button class="btn btn-default" onclick="filterOrders('all')">全部</button>
+                <button class="btn btn-warning" onclick="filterOrders('pending_pay')">待支付</button>
+                <button class="btn btn-success" onclick="filterOrders('paid')">待发货</button>
+                <button class="btn btn-primary" onclick="filterOrders('shipped')">待收货</button>
+                <button class="btn btn-default" onclick="filterOrders('finished')">已完成</button>
+            </div>
+            <div id="orderPageBody"></div>
+        </div>
+    </div>
+
+    <!-- =========页面6：卖家后台 page‑seller ========== -->
+    <div id="page-seller" class="page">
+        <h2 style="margin-bottom:16px">卖家后台｜商品管理</h2>
+        <div class="info-card">💡提示：切换角色为【卖家/管理员】才能执行新增、编辑商品；HR观察员会拦截写操作。</div>
+        <div class="card">
+            <h4>新增商品</h4>
+            <div class="form-group"><label>商品名称</label><input id="sellerProdName"></div>
+            <div class="form-group"><label>售价</label><input id="sellerProdPrice" type="number"></div>
+            <div class="form-group"><label>库存</label><input id="sellerProdStock" type="number"></div>
+            <div class="form-group">
+                <label>分类</label>
+                <select id="sellerProdCat">
+                    <option value="1">办公用品</option>
+                    <option value="2">生活用品</option>
+                    <option value="3">数码电子</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" onclick="sellerAddProduct()">新增商品</button>
+        </div>
+        <div class="card">
+            <h4>我的商品列表（上下架管理）</h4>
+            <div id="sellerProdListBox"></div>
+        </div>
+    </div>
+
+    <!-- =========页面7：项目文档 page‑about ========== -->
+    <div id="page-about" class="page">
+        <h2 style="margin-bottom:16px">项目文档与技术说明</h2>
+        <div class="info-card">
+            <h4>技术栈</h4>
+            <p>后端业务：Python FastAPI；性能瓶颈模块使用C语言扩展；数据库：SQLite轻量化，可切换MySQL/PostgreSQL；支持Redis缓存；搜索内置轻量检索，预留Elasticsearch/OpenSearch适配器；支持多节点、定时备份、读写分离的可配置冗余高可用方案。</p>
+            <br>
+            <h4>角色权限</h4>
+            <p>1.买家：浏览、加购、下单、支付、查看订单消息；<br>2.卖家：新增/编辑商品、库存管理、模拟发货；<br>3.管理员：全部权限；<br>4.HR_OBSERVER观察员：仅只读，禁止新增、修改、下单等写操作。</p>
+            <br>
+            <h4>业务完整流程</h4>
+            <p>商品浏览 →搜索筛选 →加入购物车 →提交订单 →模拟支付 →卖家发货 →确认收货完成；支持订单取消；支付层为抽象接口便于对接真实支付渠道。</p>
+            <br>
+            <p>⚠️角色切换请前往【个人中心】页面。完整后端源码保存在GitHub仓库，当前仅前端静态演示。</p>
+        </div>
+    </div>
 </div>
 
-<div class="card">
-  <h3>订单列表</h3>
-  <div id="orderBox"></div>
+<!-- 支付弹窗 -->
+<div class="modal-mask" id="payModal">
+    <div class="modal-box">
+        <h3>模拟支付窗口</h3>
+        <div style="margin:12px 0">订单号：<span id="payOrdId"></span></div>
+        <div>待支付金额：<span style="color:#ef4444;font-weight:bold;font-size:18px" id="payOrdMoney"></span> 元</div>
+        <div class="modal-buttons">
+            <button class="btn btn-default" onclick="closePayModal()">取消</button>
+            <button class="btn btn-success" onclick="mockPayOk()">模拟确认支付</button>
+        </div>
+    </div>
+</div>
+
+<!-- HR权限拦截弹窗 -->
+<div class="modal-mask" id="denyModal">
+    <div class="modal-box">
+        <h3>权限拦截</h3>
+        <div style="margin:12px 0;color:#ef4444">HR观察员角色仅允许读取查看，禁止写操作（新增/修改/下单/加购）</div>
+        <div class="modal-buttons">
+            <button class="btn btn-primary" onclick="closeDenyModal()">知道了</button>
+        </div>
+    </div>
 </div>
 
 <script>
-const mockProducts = [
-  {id:1,name:"无线蓝牙耳机",price:199,stock:120,category:3},
-  {id:2,name:"机械键盘",price:269,stock:45,category:3},
-  {id:3,name:"办公笔记本",price:49,stock:200,category:1},
-  {id:4,name:"运动水杯",price:35,stock:300,category:2}
+//常量定义
+const ROLES = {BUYER:"buyer",SELLER:"seller",ADMIN:"admin",HR:"hr_observer"};
+const ORDER_STATUS = {PENDING_PAY:"pending_pay",PAID:"paid",SHIPPED:"shipped",FINISHED:"finished",CANCEL:"cancelled"};
+const statusMap = {
+    pending_pay:{text:"待支付",cls:"st-pending"},
+    paid:{text:"待发货",cls:"st-paid"},
+    shipped:{text:"待收货",cls:"st-shipped"},
+    finished:{text:"已完成",cls:"st-finish"},
+    cancelled:{text:"已取消",cls:"st-cancel"}
+};
+
+//商品模拟数据
+let productData = [
+    {id:1,name:"无线降噪蓝牙耳机",price:199,originPrice:249,stock:120,category:3,discount:true,onSale:true},
+    {id:2,name:"机械游戏键盘 RGB",price:269,originPrice:329,stock:45,category:3,discount:true,onSale:true},
+    {id:3,name:"商务办公笔记本A5",price:49,originPrice:59,stock:200,category:1,discount:false,onSale:true},
+    {id:4,name:"大容量运动保温杯",price:35,originPrice:45,stock:300,category:2,discount:false,onSale:true},
+    {id:5,name:"电竞有线游戏鼠标",price:149,originPrice:179,stock:88,category:3,discount:true,onSale:true},
+    {id:6,name:"20000mAh便携充电宝",price:89,originPrice:109,stock:166,category:3,discount:false,onSale:true},
+    {id:7,name:"桌面收纳文件盒",price:28,originPrice:36,stock:240,category:1,discount:false,onSale:true},
+    {id:8,name:"户外便携折叠雨伞",price:42,originPrice:55,stock:180,category:2,discount:true,onSale:true}
 ];
-let cart = [];
-let orders = [];
 
-function doSearch(){
-  const kw = document.getElementById("kw").value.trim().toLowerCase();
-  let res = mockProducts;
-  if(kw){
-    res = mockProducts.filter(p=>p.name.toLowerCase().includes(kw));
-  }
-  let html = "";
-  if(res.length===0){html="<div>无匹配商品</div>"}
-  res.forEach(p=>{
-    html += `
-    <div class="product-item">
-      <div>商品：${p.name}</div>
-      <div>价格：${p.price}元｜库存：${p.stock}</div>
-      <button onclick="addToCart(${p.id})">加入购物车</button>
-    </div>`
-  })
-  document.getElementById("productList").innerHTML = html;
+//本地存储读取
+let currentPage = "page-home";
+let currentRole = localStorage.getItem("demo_role")||ROLES.BUYER;
+let cart = JSON.parse(localStorage.getItem("demo_cart"))||[];
+let orders = JSON.parse(localStorage.getItem("demo_orders"))||[];
+let collectList = JSON.parse(localStorage.getItem("demo_collect"))||[];
+let msgList = JSON.parse(localStorage.getItem("demo_msg"))||[
+    {id:1,title:"系统通知",content:"欢迎使用电商平台",time:"2026‑10‑19",read:false}
+];
+let addrList = JSON.parse(localStorage.getItem("demo_addr"))||[];
+let userProfile = JSON.parse(localStorage.getItem("demo_profile"))||{username:"测试用户",phone:""};
+let orderFilterType = "all";
+let payingOrderId = null;
+
+//保存全部本地存储
+function saveAllStorage(){
+    localStorage.setItem("demo_role",currentRole);
+    localStorage.setItem("demo_cart",JSON.stringify(cart));
+    localStorage.setItem("demo_orders",JSON.stringify(orders));
+    localStorage.setItem("demo_collect",JSON.stringify(collectList));
+    localStorage.setItem("demo_msg",JSON.stringify(msgList));
+    localStorage.setItem("demo_addr",JSON.stringify(addrList));
+    localStorage.setItem("demo_profile",JSON.stringify(userProfile));
 }
 
-function addToCart(pid){
-  const prod = mockProducts.find(x=>x.id===pid);
-  const exist = cart.find(x=>x.id===pid);
-  if(exist){
-    exist.count +=1;
-  }else{
-    cart.push({...prod,count:1})
-  }
-  renderCart();
+//权限校验：HR禁止写操作
+function checkWritePerm(){
+    if(currentRole === ROLES.HR){
+        document.getElementById("denyModal").style.display="flex";
+        return false;
+    }
+    return true;
 }
 
-function renderCart(){
-  let html = "";
-  if(cart.length===0){html="<div>购物车为空</div>"}
-  cart.forEach(item=>{
-    html += `<div>${item.name} ×${item.count} | ${item.price * item.count}元</div>`
-  })
-  document.getElementById("cartBox").innerHTML = html;
+//【核心页面跳转 goPage：导航栏点击切换完整大页面，同步导航active高亮】
+function goPage(pageId){
+    //隐藏所有page
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("page-show"));
+    //显示目标页面
+    document.getElementById(pageId).classList.add("page-show");
+    currentPage = pageId;
+
+    //清除导航所有active
+    document.querySelectorAll(".nav-menu a").forEach(a=>a.classList.remove("nav-active"));
+    //给对应导航a加上active
+    const navA = document.querySelector(`.nav-menu a[data-page="${pageId}"]`);
+    if(navA) navA.classList.add("nav-active");
+
+    //面包屑
+    const breadMap = {
+        "page-home":"首页",
+        "page-goods":"商品列表",
+        "page-cart":"购物车",
+        "page-message":"消息中心",
+        "page-profile":"个人中心",
+        "page-order-sub":"订单中心",
+        "page-seller":"卖家后台",
+        "page-about":"项目文档"
+    };
+    document.getElementById("breadText").innerText = breadMap[pageId]||"";
+
+    //页面切换自动渲染对应内容
+    renderHomeProducts();
+    renderGoodsProducts();
+    renderCartPage();
+    renderMsgPage();
+    renderProfileFill();
+    renderAddrList();
+    renderOrdersPage();
+    renderSellerProdList();
+    updateBadges();
 }
 
-function submitOrder(){
-  if(cart.length===0){alert("购物车为空");return;}
-  const total = cart.reduce((sum,i)=>sum+i.price*i.count,0);
-  const newOrder = {
-    orderId:"ORD"+Date.now(),
-    total:total,
-    status:"待支付"
-  }
-  orders.push(newOrder);
-  cart = [];
-  renderCart();
-  renderOrder();
-  alert(`模拟下单成功！订单号：${newOrder.orderId}`);
+//全局导航栏搜索
+function globalSearchClick(){
+    const kw = document.getElementById("globalSearch").value.trim();
+    document.getElementById("homeKw").value = kw;
+    document.getElementById("goodsKw").value = kw;
+    goPage("page-home");
 }
 
-function renderOrder(){
-  let html="";
-  if(orders.length===0){html="<div>暂无订单</div>"}
-  orders.forEach(o=>{
-    html += `<div class="product-item">订单号：${o.orderId}｜金额：${o.total}元｜状态：${o.status}</div>`
-  })
-  document.getElementById("orderBox").innerHTML = html;
+//商品渲染：首页
+function renderHomeProducts(){
+    const kw = document.getElementById("homeKw")?.value?.toLowerCase()||"";
+    const cat = document.getElementById("homeCat")?.value||"";
+    const minP = Number(document.getElementById("homeMin")?.value)||0;
+    const maxP = Number(document.getElementById("homeMax")?.value)||99999;
+    let list = productData.filter(p=>p.onSale===true);
+    if(kw) list = list.filter(p=>p.name.toLowerCase().includes(kw));
+    if(cat) list = list.filter(p=>String(p.category)===cat);
+    list = list.filter(p=>p.price>=minP&&p.price<=maxP);
+    let html = "";
+    if(!list.length){html=`<div class="empty" style="grid-column:1/-1">暂无商品</div>`;}
+    list.forEach(p=>{
+        const lowStock = p.stock<60;
+        const isCol = collectList.includes(p.id);
+        html +=`
+        <div class="product-card">
+            <div class="prod-img">${p.discount?'<span class="tag-sale">特惠</span>':''}📦</div>
+            <div class="prod-body">
+                <div class="prod-name">${p.name}</div>
+                <div><span class="price-now">¥${p.price}</span><span class="price-old">¥${p.originPrice}</span></div>
+                <div class="prod-meta ${lowStock?'stock-warn':''}">库存：${p.stock}件 ${lowStock?"库存紧张":""}</div>
+                <div class="prod-buttons">
+                    <button class="btn btn-primary" onclick="cartAdd(${p.id})">加入购物车</button>
+                    <button class="btn btn-default" onclick="toggleCollect(${p.id})">${isCol?"❤️已收藏":"🤍收藏"}</button>
+                </div>
+            </div>
+        </div>`;
+    })
+    document.getElementById("homeProductBox").innerHTML = html;
 }
 
-doSearch();
-renderCart();
-renderOrder();
+//商品渲染：商品列表页
+function renderGoodsProducts(){
+    const kw = document.getElementById("goodsKw")?.value?.toLowerCase()||"";
+    const cat = document.getElementById("goodsCat")?.value||"";
+    let list = productData.filter(p=>p.onSale===true);
+    if(kw) list = list.filter(p=>p.name.toLowerCase().includes(kw));
+    if(cat) list = list.filter(p=>String(p.category)===cat);
+    let html = "";
+    if(!list.length){html=`<div class="empty" style="grid-column:1/-1">暂无商品</div>`;}
+    list.forEach(p=>{
+        const lowStock = p.stock<60;
+        const isCol = collectList.includes(p.id);
+        html +=`
+        <div class="product-card">
+            <div class="prod-img">${p.discount?'<span class="tag-sale">特惠</span>':''}📦</div>
+            <div class="prod-body">
+                <div class="prod-name">${p.name}</div>
+                <div><span class="price-now">¥${p.price}</span><span class="price-old">¥${p.originPrice}</span></div>
+                <div class="prod-meta ${lowStock?'stock-warn':''}">库存：${p.stock}件 ${lowStock?"库存紧张":""}</div>
+                <div class="prod-buttons">
+                    <button class="btn btn-primary" onclick="cartAdd(${p.id})">加入购物车</button>
+                    <button class="btn btn-default" onclick="toggleCollect(${p.id})">${isCol?"❤️已收藏":"🤍收藏"}</button>
+                </div>
+            </div>
+        </div>`;
+    })
+    document.getElementById("goodsProductBox").innerHTML = html;
+}
+
+//加入购物车
+function cartAdd(pid){
+    if(!checkWritePerm()) return;
+    const prod = productData.find(x=>x.id===pid);
+    const exist = cart.find(x=>x.id===pid);
+    if(exist){exist.count +=1;}else{cart.push({...prod,count:1});}
+    saveAllStorage();
+    updateBadges();
+    renderCartPage();
+}
+
+//收藏切换
+function toggleCollect(pid){
+    const idx = collectList.indexOf(pid);
+    if(idx>-1){collectList.splice(idx,1);}else{collectList.push(pid);}
+    saveAllStorage();
+    renderHomeProducts();
+    renderGoodsProducts();
+}
+
+//【完整独立购物车页面渲染】
+function renderCartPage(){
+    let html = "";
+    if(cart.length===0){html=`<div class="empty">购物车暂无商品，请先添加商品</div>`;}
+    cart.forEach((item,idx)=>{
+        html +=`
+        <div class="cart-item-row">
+            <div style="flex:1">
+                <div style="font-weight:500">${item.name}</div>
+                <div style="font-size:13px;color:#666">单价：¥${item.price}</div>
+            </div>
+            <div class="cart-qty">
+                <button onclick="cartMinus(${idx})">-</button>
+                <span>${item.count}</span>
+                <button onclick="cartPlus(${idx})">+</button>
+                <button class="btn btn-danger" onclick="cartDel(${idx})">删除</button>
+            </div>
+            <div>小计：¥${item.price*item.count}</div>
+        </div>`;
+    })
+    document.getElementById("cartPageBody").innerHTML = html;
+    const total = cart.reduce((s,i)=>s+i.price*i.count,0);
+    document.getElementById("cartPageTotal").innerText = total;
+}
+function cartMinus(idx){
+    if(cart[idx].count>1){cart[idx].count-=1;}else{cart.splice(idx,1);}
+    saveAllStorage();updateBadges();renderCartPage();
+}
+function cartPlus(idx){cart[idx].count+=1;saveAllStorage();updateBadges();renderCartPage();}
+function cartDel(idx){cart.splice(idx,1);saveAllStorage();updateBadges();renderCartPage();}
+
+//购物车页面直接结算
+function cartPageCheckout(){
+    if(!checkWritePerm()) return;
+    if(cart.length===0){alert("购物车为空");return;}
+    const total = cart.reduce((s,i)=>s+i.price*i.count,0);
+    const newOrder = {
+        orderId:"ORD"+Date.now(),
+        total:total,
+        status:ORDER_STATUS.PENDING_PAY,
+        createTime:new Date().toLocaleString(),
+        items:[...cart]
+    };
+    orders.push(newOrder);
+    cart = [];
+    saveAllStorage();
+    updateBadges();
+    renderCartPage();
+    payingOrderId = newOrder.orderId;
+    document.getElementById("payOrdId").innerText = newOrder.orderId;
+    document.getElementById("payOrdMoney").innerText = newOrder.total;
+    document.getElementById("payModal").style.display="flex";
+}
+function closePayModal(){document.getElementById("payModal").style.display="none";payingOrderId=null;}
+function mockPayOk(){
+    if(!payingOrderId) return;
+    const o = orders.find(x=>x.orderId===payingOrderId);
+    if(o){o.status = ORDER_STATUS.PAID;}
+    //新增支付成功系统消息
+    msgList.unshift({id:Date.now(),title:"订单支付成功",content:`订单${payingOrderId}已支付成功，等待卖家发货`,time:new Date().toLocaleString(),read:false});
+    saveAllStorage();
+    closePayModal();
+    renderOrdersPage();
+    renderMsgPage();
+    updateBadges();
+    alert("✅模拟支付成功");
+}
+
+//消息中心页面渲染
+function renderMsgPage(){
+    let html = "";
+    if(msgList.length===0){html=`<div class="empty">暂无消息</div>`;}
+    msgList.forEach(m=>{
+        html +=`
+        <div class="msg-item">
+            <div class="msg-title">${m.title} ${m.read?"":"🔴"}</div>
+            <div>${m.content}</div>
+            <div class="msg-time">${m.time}</div>
+        </div>`;
+    })
+    document.getElementById("msgPageBody").innerHTML = html;
+}
+
+//个人中心：填充表单
+function renderProfileFill(){
+    document.getElementById("profileUsername").value = userProfile.username||"";
+    document.getElementById("profilePhone").value = userProfile.phone||"";
+    document.getElementById("profileRoleSelect").value = currentRole;
+}
+//保存个人资料&角色切换
+function saveProfile(){
+    userProfile.username = document.getElementById("profileUsername").value.trim();
+    userProfile.phone = document.getElementById("profilePhone").value.trim();
+    currentRole = document.getElementById("profileRoleSelect").value;
+    saveAllStorage();
+    alert("✅个人资料已保存");
+}
+
+//收货地址
+function addAddress(){
+    const name = document.getElementById("addrName").value.trim();
+    const phone = document.getElementById("addrPhone").value.trim();
+    const detail = document.getElementById("addrDetail").value.trim();
+    if(!name||!phone||!detail){alert("请完整填写地址");return;}
+    addrList.push({id:Date.now(),name,phone,detail});
+    saveAllStorage();
+    renderAddrList();
+    document.getElementById("addrName").value="";
+    document.getElementById("addrPhone").value="";
+    document.getElementById("addrDetail").value="";
+}
+function renderAddrList(){
+    let html = "";
+    if(addrList.length===0){html=`<div class="empty">暂无收货地址，请新增</div>`;}
+    addrList.forEach(a=>{
+        html +=`<div class="card" style="margin:8px 0;padding:12px">收件人：${a.name}｜电话：${a.phone}<br>地址：${a.detail}</div>`;
+    })
+    document.getElementById("addrListBox").innerHTML = html;
+}
+
+//订单页面渲染&筛选
+function filterOrders(t){orderFilterType=t;renderOrdersPage();}
+function renderOrdersPage(){
+    let list = [...orders];
+    if(orderFilterType!=="all") list = list.filter(o=>o.status===orderFilterType);
+    let html = "";
+    if(!list.length){html=`<div class="empty">暂无订单记录</div>`;}
+    list.forEach(o=>{
+        const stInfo = statusMap[o.status];
+        html +=`
+        <div class="order-card">
+            <div class="order-head">
+                <span class="order-no">订单号：${o.orderId}</span>
+                <span class="status-tag ${stInfo.cls}">${stInfo.text}</span>
+            </div>
+            <div>下单时间：${o.createTime}</div>
+            <div>订单总金额：¥${o.total}</div>
+            <div class="order-actions">
+                ${o.status===ORDER_STATUS.PAID?`<button class="btn btn-primary" onclick="mockShipOrder('${o.orderId}')">模拟发货</button>`:""}
+                ${o.status===ORDER_STATUS.SHIPPED?`<button class="btn btn-success" onclick="mockFinishOrder('${o.orderId}')">确认收货完成</button>`:""}
+                ${o.status===ORDER_STATUS.PENDING_PAY?`<button class="btn btn-danger" onclick="mockCancelOrder('${o.orderId}')">取消订单</button>`:""}
+            </div>
+        </div>`;
+    })
+    document.getElementById("orderPageBody").innerHTML = html;
+}
+function mockShipOrder(oid){
+    if(!checkWritePerm()) return;
+    const o = orders.find(x=>x.orderId===oid);
+    if(o&&o.status===ORDER_STATUS.PAID){
+        o.status = ORDER_STATUS.SHIPPED;
+        msgList.unshift({id:Date.now(),title:"订单发货通知",content:`订单${oid}已发货`,time:new Date().toLocaleString(),read:false});
+        saveAllStorage();renderOrdersPage();renderMsgPage();updateBadges();alert("🚚模拟发货完成");
+    }
+}
+function mockFinishOrder(oid){
+    const o = orders.find(x=>x.orderId===oid);
+    if(o&&o.status===ORDER_STATUS.SHIPPED){
+        o.status = ORDER_STATUS.FINISHED;
+        msgList.unshift({id:Date.now(),title:"订单已完成",content:`订单${oid}已确认收货完成`,time:new Date().toLocaleString(),read:false});
+        saveAllStorage();renderOrdersPage();renderMsgPage();updateBadges();alert("✅确认收货，订单已完成");
+    }
+}
+function mockCancelOrder(oid){
+    if(!checkWritePerm()) return;
+    const o = orders.find(x=>x.orderId===oid);
+    if(o&&o.status===ORDER_STATUS.PENDING_PAY){
+        o.status = ORDER_STATUS.CANCEL;
+        saveAllStorage();renderOrdersPage();alert("订单已取消");
+    }
+}
+
+//卖家后台：新增商品
+function sellerAddProduct(){
+    if(!checkWritePerm()) return;
+    const name = document.getElementById("sellerProdName").value.trim();
+    const price = Number(document.getElementById("sellerProdPrice").value);
+    const stock = Number(document.getElementById("sellerProdStock").value);
+    const cat = Number(document.getElementById("sellerProdCat").value);
+    if(!name||!price||!stock){alert("请完整填写商品信息");return;}
+    const newId = Date.now();
+    productData.push({id:newId,name:name,originPrice:price+20,price:price,stock:stock,category:cat,discount:false,onSale:true});
+    saveAllStorage();
+    renderSellerProdList();
+    renderHomeProducts();renderGoodsProducts();
+    alert("✅新增商品成功");
+}
+function renderSellerProdList(){
+    let html = "";
+    productData.forEach(p=>{
+        html +=`
+        <div class="order-card">
+            <div>商品：${p.name}</div>
+            <div>售价：${p.price}｜库存：${p.stock}</div>
+            <div>上下架状态：${p.onSale?"✅已上架":"❌已下架"}</div>
+            <div class="order-actions">
+                <button class="btn btn-warning" onclick="toggleOnSale(${p.id})">切换上下架</button>
+            </div>
+        </div>`;
+    })
+    document.getElementById("sellerProdListBox").innerHTML = html;
+}
+function toggleOnSale(pid){
+    if(!checkWritePerm()) return;
+    const p = productData.find(x=>x.id===pid);
+    p.onSale = !p.onSale;
+    saveAllStorage();
+    renderSellerProdList();
+    renderHomeProducts();renderGoodsProducts();
+}
+
+//角标更新（购物车数量、消息未读）
+function updateBadges(){
+    const cartCnt = cart.reduce((s,i)=>s+i.count,0);
+    document.getElementById("cartBadge").innerText = cartCnt;
+    const unreadMsg = msgList.filter(m=>!m.read).length;
+    document.getElementById("msgBadge").innerText = unreadMsg;
+}
+
+//权限弹窗关闭
+function closeDenyModal(){document.getElementById("denyModal").style.display="none";}
+
+//页面初始化
+window.onload = function(){
+    goPage("page-home");
+}
 </script>
 </body>
 </html>
