@@ -1,0 +1,15 @@
+campus_ecommerce/
+├── main.py                # FastAPI后端主程序(Python业务逻辑)
+├── c_ext                  # C性能扩展模块占位
+│   └── calc_helper.c
+├── schemas.py             # pydantic数据模型
+├── database.py            # 数据库连接 SQLite默认
+├── models.py              # ORM数据库模型
+├── crud.py                # 业务CRUD
+├── search_adapter.py      # 搜索适配器：内置轻量搜索 + ES预留接口
+├── redundancy_config.py   # 冗余高可用配置（多节点、备份开关）
+├── payment_abstract.py    # 支付抽象接口
+├── static/                # 前端静态页面（放到Github Pages就是二维码访问的页面）
+│   └── index.html
+├── Dockerfile             # 容器轻量化部署
+└── requirements.txt
