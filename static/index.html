@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>互联网电商交易平台｜项目演示</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;padding:16px;max-width:1200px;margin:0 auto;background:#f7f8fa}
+h1{margin-bottom:12px;color:#1f2937;font-size:22px}
+.desc{color:#666;margin-bottom:20px;font-size:14px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px;margin:10px 0}
+button{padding:8px 14px;background:#2563eb;color:#fff;border:none;border-radius:6px;cursor:pointer;margin:4px;font-size:14px}
+button:disabled{background:#94a3b8;cursor:not-allowed}
+input{padding:8px 10px;margin:4px;border:1px solid #cbd5e1;border-radius:6px;font-size:14px}
+.product-item{border:1px solid #ddd;padding:12px;border-radius:8px;margin:8px 0}
+.tip{background:#dbeafe;padding:10px;border-radius:6px;margin:12px 0;color:#1e40af;font-size:13px}
+</style>
+</head>
+<body>
+<h1>互联网商品交易电商平台(MVP演示)</h1>
+<div class="desc">
+项目技术栈：Python(FastAPI)业务逻辑，C实现性能模块；角色：买家/卖家/管理员/HR观察员(仅只读)；本页面为静态演示，无真实后端调用，完整源码见GitHub仓库。
+</div>
+
+<div class="tip">💡简历作品演示：界面模拟商品展示、搜索、购物车、下单流程；完整业务逻辑代码存放于GitHub。</div>
+
+<div class="card">
+  <h3>商品搜索（模拟）</h3>
+  <input id="kw" placeholder="输入关键词模糊搜索">
+  <button onclick="doSearch()">搜索</button>
+  <div id="productList"></div>
+</div>
+
+<div class="card">
+  <h3>购物车</h3>
+  <div id="cartBox"></div>
+  <button onclick="submitOrder()">提交订单(模拟)</button>
+</div>
+
+<div class="card">
+  <h3>订单列表</h3>
+  <div id="orderBox"></div>
+</div>
+
+<script>
+//模拟商品数据
+const mockProducts = [
+  {id:1,name:"无线蓝牙耳机",price:199,stock:120,category:3},
+  {id:2,name:"机械键盘",price:269,stock:45,category:3},
+  {id:3,name:"办公笔记本",price:49,stock:200,category:1},
+  {id:4,name:"运动水杯",price:35,stock:300,category:2}
+];
+let cart = [];
+let orders = [];
+
+//模拟搜索
+function doSearch(){
+  const kw = document.getElementById("kw").value.trim().toLowerCase();
+  let res = mockProducts;
+  if(kw){
+    res = mockProducts.filter(p=>p.name.toLowerCase().includes(kw));
+  }
+  let html = "";
+  if(res.length===0){html="<div>无匹配商品</div>"}
+  res.forEach(p=>{
+    html += `
+    <div class="product-item">
+      <div>商品：${p.name}</div>
+      <div>价格：${p.price}元｜库存：${p.stock}</div>
+      <button onclick="addToCart(${p.id})">加入购物车</button>
+    </div>`
+  })
+  document.getElementById("productList").innerHTML = html;
+}
+
+//加入购物车
+function addToCart(pid){
+  const prod = mockProducts.find(x=>x.id===pid);
+  const exist = cart.find(x=>x.id===pid);
+  if(exist){
+    exist.count +=1;
+  }else{
+    cart.push({...prod,count:1})
+  }
+  renderCart();
+}
+
+function renderCart(){
+  let html = "";
+  if(cart.length===0){html="<div>购物车为空</div>"}
+  cart.forEach(item=>{
+    html += `<div>${item.name} ×${item.count} | ${item.price * item.count}元</div>`
+  })
+  document.getElementById("cartBox").innerHTML = html;
+}
+
+//模拟下单
+function submitOrder(){
+  if(cart.length===0){alert("购物车为空");return;}
+  const total = cart.reduce((sum,i)=>sum+i.price*i.count,0);
+  const newOrder = {
+    orderId:"ORD"+Date.now(),
+    total:total,
+    status:"待支付"
+  }
+  orders.push(newOrder);
+  cart = [];
+  renderCart();
+  renderOrder();
+  alert(`模拟下单成功！订单号：${newOrder.orderId}`);
+}
+
+function renderOrder(){
+  let html="";
+  if(orders.length===0){html="<div>暂无订单</div>"}
+  orders.forEach(o=>{
+    html += `<div class="product-item">订单号：${o.orderId}｜金额：${o.total}元｜状态：${o.status}</div>`
+  })
+  document.getElementById("orderBox").innerHTML = html;
+}
+
+//页面初始化
+doSearch();
+renderCart();
+renderOrder();
+</script>
+</body>
+</html>
